@@ -1,17 +1,18 @@
 .PHONY: rs
 rs:
 	docker compose up -d
-	poetry run python manage.py runserver
+	poetry run python ./src/manage.py runserver
 
 .PHONY: mm
 mm:
-	poetry run python manage.py makemigrations && poetry run python manage.py migrate
+	poetry run python ./src/manage.py makemigrations && poetry run python ./src/manage.py migrate
 
 .PHONY: t
 t:
-	poetry run python manage.py test
+	poetry run python ./src/manage.py test
 
 
 .PHONY: clean
 clean:
-	poetry run python manage.py flush && poetry run python manage.py clearsessions
+	cd src
+	poetry run python ./src/manage.py flush && poetry run python ./src/manage.py clearsessions
