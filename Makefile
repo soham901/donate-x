@@ -1,5 +1,6 @@
 .PHONY: rs
 rs:
+	docker compose up -d
 	poetry run python manage.py runserver
 
 .PHONY: mm
